@@ -73,6 +73,7 @@ class UserService extends Service {
                     exclude: ['password']
                 },
             });
+
             if (!user) return this.ServerResponse.createByErrorMsg('注册失败');
 
             user = user.toJSON();

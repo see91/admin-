@@ -12,10 +12,10 @@ module.exports = app => {
     const UserModel = app.model.define('user', {
         id: {
             type: UUID,
-            defaultValue: UUIDV4,
+            // defaultValue: UUIDV4,
             allowNull: false,
             primaryKey: true,
-            // autoIncrement: true,
+            autoIncrement: true,
         },
         username: {
             type: STRING(50),
@@ -24,7 +24,7 @@ module.exports = app => {
         },
         realname: {
             type: STRING(50),
-            allowNull: false,
+            allowNull: true,
             unique: false,
         },
         password: {
@@ -39,7 +39,7 @@ module.exports = app => {
             type: STRING(20),
             allowNull: true,
         },
-        createTime: {
+        create_time: {
             type: DATE,
             allowNull: false,
             defaultValue: new Date(),
@@ -47,17 +47,17 @@ module.exports = app => {
                 return moment(this.getDataValue('createTime')).format('YYYY-MM-DD HH:mm:ss');
             }
         },
-        updateTime: {
-            type: DATE,
-            allowNull: false,
-            defaultValue: new Date(),
-            get() {
-                return moment(this.getDataValue('updateTime')).format('YYYY-MM-DD HH:mm:ss');
-            }
-        },
+        // updateTime: {
+        //     type: DATE,
+        //     allowNull: false,
+        //     defaultValue: new Date(),
+        //     get() {
+        //         return moment(this.getDataValue('updateTime')).format('YYYY-MM-DD HH:mm:ss');
+        //     }
+        // },
         status: {
             type: INTEGER,
-            allowNull: false,
+            allowNull: true,
             default: 0
         },
         desc: {
